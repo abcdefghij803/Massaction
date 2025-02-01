@@ -1,5 +1,5 @@
 import sys
-from pyrogram import Client, filters
+from pyrogram import Client
 import asyncio
 import json
 from pyrogram.raw.functions.account import ReportPeer
@@ -7,75 +7,70 @@ from pyrogram.raw.types import *
 
 
 def get_reason(text):
-    if text == "Report for child abuse":
-        return InputReportReasonChildAbuse()
-    elif text == "Report for impersonation":
-        return InputReportReasonFake()
-    elif text == "Report for copyrighted content":
-        return InputReportReasonCopyright()
-    elif text == "Report an irrelevant geogroup":
-        return InputReportReasonGeoIrrelevant()
-    elif text == "Reason for Pornography":
-        return InputReportReasonPornography()
-    elif text == "Report an illegal durg":
-        return InputReportReasonIllegalDrugs()
-    elif text == "Report for offensive person detail":
-        return InputReportReasonSpam()
-    elif text == "Report for spam":
-        return InputReportReasonPersonalDetails()
-    elif text == "Report for Violence":
-        return InputReportReasonViolence()
+    reasons = {
+        "Report for child abuse": InputReportReasonChildAbuse,
+        "Report for impersonation": InputReportReasonFake,
+        "Report for copyrighted content": InputReportReasonCopyright,
+        "Report an irrelevant geogroup": InputReportReasonGeoIrrelevant,
+        "Reason for Pornography": InputReportReasonPornography,
+        "Report an illegal drug": InputReportReasonIllegalDrugs,
+        "Report for offensive person detail": InputReportReasonSpam,
+        "Report for spam": InputReportReasonPersonalDetails,
+        "Report for Violence": InputReportReasonViolence
+    }
+    return reasons.get(text, None)  # Default None if not found
 
-#report = app.send(report_peer)
 
-async def main(message):
-     config = (json.load(open("config.json")))
-     resportreaso = message
-     resportreason = get_reason(message)
-    # resportreason = input("whats ur pepoet reason: ")
-     
-     pee = config['Target']
-     for account in config["accounts"]:
-        string = account["Session_String"]
-        Name = account['OwnerName']
-        async with Client(name="Session", session_string=string) as app:
-            try:
-                #await app.get_chat(-1001433138571)
-                peer = await app.resolve_peer(pee)
-                peer_id = peer.channel_id
-                access_hash = peer.access_hash
-                channel = InputPeerChannel(channel_id=peer_id, access_hash=access_hash)
-            except Exception as e:
-                print(e)
-            # elif dat.lower() == "user":
-            #     peer = await app.resolve_peer(pee)
-                
-            #     user_id = int(peer.user_id)
-            #     access_hash = str(peer.access_hash)
-            #     channel = InputPeerUser(user_id=user_id, access_hash=access_hash)
-            
-            report_peer = ReportPeer(
-                                        peer=channel, 
-                                        reason=resportreason, 
-                                        message=resportreaso
-                                    )
+async def main(reason_text, message_text):
+    try:
+        config = json.load(open("config.json"))
+        report_reason_class = get_reason(reason_text)
 
-            try:
-                result = await app.invoke(report_peer)
-                print(result, 'Reported by Account', Name)
-                 
-            except BaseException as e:
-                print(e)
-                print("failed to report from :", Name)
-            
-                
+        if report_reason_class is None:
+            print(f"Invalid report reason: {reason_text}")
+            return
+
+        report_reason = report_reason_class()
+        target = config.get('Target')
+
+        for account in config["accounts"]:
+            session_string = account["Session_String"]
+            owner_name = account['OwnerName']
+
+            async with Client(name="Session", session_string=session_string) as app:
+                try:
+                    peer = await app.resolve_peer(target)
+                    peer_id = getattr(peer, 'channel_id', None)
+                    access_hash = getattr(peer, 'access_hash', None)
+
+                    if peer_id is None or access_hash is None:
+                        print(f"Failed to resolve peer: {target}")
+                        continue
+
+                    channel = InputPeerChannel(channel_id=peer_id, access_hash=access_hash)
+                    
+                    report_peer = ReportPeer(
+                        peer=channel,
+                        reason=report_reason,
+                        message=message_text
+                    )
+
+                    result = await app.invoke(report_peer)
+                    print(f"Success: {result} | Reported by {owner_name}")
+
+                except Exception as e:
+                    print(f"Error reporting from {owner_name}: {e}")
+
+    except Exception as e:
+        print(f"Error in main function: {e}")
+
+
 if __name__ == "__main__":
-    # Check if the correct number of command-line arguments is provided
-    if len(sys.argv) != 2:
-        print("Usage: python your_script.py <reason> <message>")
+    if len(sys.argv) != 3:
+        print("Usage: python your_script.py '<reason>' '<message>'")
         sys.exit(1)
 
-    # Get command-line arguments
-    input_string = sys.argv[1]
+    reason_arg = sys.argv[1]
+    message_arg = sys.argv[2]
 
-    asyncio.run(main(message=input_string))
+    asyncio.run(main(reason_arg, message_arg))
