@@ -34,10 +34,10 @@ async def handle_Query(bot: Client, query: CallbackQuery):
     if data == "help":
 
         HelpBtn = [
-            [InlineKeyboardButton(text='Tᴀʀɢᴇᴛ 🎯', callback_data='targetchnl'), InlineKeyboardButton
-                (text='Dᴇʟᴇᴛᴇ Cᴏɴғɪɢ ❌', callback_data='delete_conf')],
-            [InlineKeyboardButton(text='Tɢ Aᴄᴄᴏᴜɴᴛs 👥', callback_data='account_config'),
-             InlineKeyboardButton(text='⟸ Bᴀᴄᴋ', callback_data='home')]
+            [InlineKeyboardButton(text='˹ ᴛᴧꝛɢєᴛ ˼', callback_data='targetchnl'), InlineKeyboardButton
+                (text='˹ ᴅєʟєᴛє ᴄσηғɪɢ ˼', callback_data='delete_conf')],
+            [InlineKeyboardButton(text='˹ ᴛɢ ᴧᴄᴄσυηᴛs ˼', callback_data='account_config'),
+             InlineKeyboardButton(text='˹ ʙᴧᴄᴋ ˼', callback_data='home')]
         ]
 
         await query.message.edit(text=Txt.HELP_MSG, reply_markup=InlineKeyboardMarkup(HelpBtn))
@@ -74,12 +74,12 @@ async def handle_Query(bot: Client, query: CallbackQuery):
 
     elif data == "home":
         Btn = [
-            [InlineKeyboardButton(text='⛑️𝖧𝖤𝖫𝖯🚁', callback_data='help'), InlineKeyboardButton(
-                text='🌀𝖡𝖮𝖳 𝖲𝖳𝖠𝖳𝖴𝖲✳️', callback_data='server')],
-            [InlineKeyboardButton(text='📰𝖴𝖯𝖣𝖠𝖳𝖤🗞️', url='https://t.me/ALLTYPECC'),
-             InlineKeyboardButton(text='🤖𝖡𝖮𝖳 𝖨𝖭𝖥𝖮ℹ️', callback_data='about')],
-            [InlineKeyboardButton(text='🧑‍💻𝖣𝖤𝖵⌨️',
-                                  url='https://t.me/itzdaxx')]
+            [InlineKeyboardButton(text='˹ ʜєʟᴘ ˼', callback_data='help'), InlineKeyboardButton(
+                text='˹ ʙσᴛ sᴛᴧᴛυs ˼', callback_data='server')],
+            [InlineKeyboardButton(text='˹ υᴘᴅᴧᴛє ˼', url='https://t.me/+-P8KJFTJYcIyZTcx'),
+             InlineKeyboardButton(text='˹ ʙσᴛ ɪηғσ ˼', callback_data='about')],
+            [InlineKeyboardButton(text='˹ σᴡηєꝛ ˼',
+                                  url='https://t.me/aboutitachii')]
         ]
 
         await query.message.edit(text=Txt.START_MSG.format(query.from_user.mention), reply_markup=InlineKeyboardMarkup(Btn))
@@ -108,9 +108,9 @@ async def handle_Query(bot: Client, query: CallbackQuery):
         Info = await bot.get_chat(config['Target'])
 
         btn = [
-            [InlineKeyboardButton(text='Change Target',
+            [InlineKeyboardButton(text='˹ ᴄʜᴧηɢє ᴛᴧꝛɢєᴛ ˼',
                                   callback_data='chgtarget')],
-            [InlineKeyboardButton(text='⟸ Bᴀᴄᴋ', callback_data='help')]
+            [InlineKeyboardButton(text='˹ ʙᴧᴄᴋ ˼', callback_data='help')]
         ]
 
         text = f"Channel Name :- <code> {Info.title} </code>\nChannel Username :- <code> @{Info.username} </code>\nChannel Chat Id :- <code> {Info.id} </code>"
