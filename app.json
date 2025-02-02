@@ -24,6 +24,11 @@
             "description":"Add Your User or Chat ID",
             "value": "",
             "required": true
+        },
+        "SUDO": {
+            "description":"Add Your Sudo users",
+            "value": "",
+            "required": true        
         }
     },
     "buildpacks": [
