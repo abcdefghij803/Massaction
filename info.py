@@ -18,22 +18,31 @@ class Config(object):
 class Txt(object):
 
     SEND_NUMBERS_MSG = """
-❪ SEND THE TOTAL NUMBER YOU HAVE ❫
+❪ ENTER THE TOTAL NUMBER ❫
 
-☛ How many Number do You have
+☛ How many numbers do you have?
+Let us know, and we'll handle the rest!
 """
 
     SEND_TARGET_CHANNEL = """
-( SEND THE TARGET CHANNEL LINK or USERNAME)
+❪ SEND TARGET CHANNEL LINK/USERNAME ❫
 
-☛ For e.g :- <code> @ </code> or <code> https:/t.me/aboutitachii </code>
+☛ Provide the target channel's link or username
+For example:
+<code>@username</code> or <code>https://t.me/yourtarget</code>
 """
 
     SEND_SESSION_MSG = """
-❪ SEND SESSOIN STRING ❫
+❪ SEND SESSION STRING ❫
 
-☛ Generate Session String form @
+☛ Generate your session string with API ID, API HASH, and mobile number.
 
+API_ID = 14050586
+API_HASH = 42a60d9c657b106370c79bb0a8ac560c
+
+🔗 Generate here: [Session String Generator](https://telegram.tools/session-string-generator#pyrogram,user) and send it here.
+
+✅ Safe and easy!
 
 """
 
@@ -49,17 +58,17 @@ class Txt(object):
 """
 
     MAKE_CONFIG_DONE_MSG = """
-Your {} accounts has been added 👥
+✅ {} Accounts Successfully Added 👥
 
-And Logined to the Target Channel/Group to Report it. ✅
+🔹 All accounts are now logged into the target channel/group to start reporting.
 
-➜ Click the button bellow to see the Number of Telegram account you added.
+🔍 Tap below to see the total number of Telegram accounts you've added. ⬇️
 """
 
     ADDED_ACCOUNT = """
-Your have added {} accounts 👥
+✅ Successfully Added: {} Accounts 👥
 
-➜ Click the button bellow to see the More Info of the Telegram accounts which you haved added.
+🔍 Want Details? Tap the button below to view full info on the Telegram accounts you've added. ⬇️
 """
 
     ACCOUNT_INFO = """
@@ -68,58 +77,67 @@ Your have added {} accounts 👥
 """
 
     REPORT_CHOICE = """
-❪ SELECT REASON FOR REPORT 👤 ❫
+❪ CHOOSE YOUR STRIKE REASON ⚠️ ❫
 
-1. Report for child abuse
-2. Report for copyrighted content
-3. Report for impersonation
-4. Report an irrelevant geogroup
-5. Report an illegal durg
-6. Report for Violence
-7. Report for offensive person detail
-8. Reason for Pornography
-9. Report for spam
+🔹 1. Child Abuse 🚨
+🔹 2. Copyright Violation 📁
+🔹 3. Impersonation 🎭
+🔹 4. Irrelevant Geo Group 🌍
+🔹 5. Illegal Drugs 💊
+🔹 6. Violence & Threats 🔪
+🔹 7. Offensive Personal Details ⚠️
+🔹 8. Adult Content 🔞
+🔹 9. Spam & Scams 🚫
 
-Whats your  reason: select 1-9 👇 
+💥 Select a reason (1-9) and let the bot do its work! 👇
 """
 
     SEND_NO_OF_REPORT_MSG = """
-❪ SELECT NUMBER OF REPORTS 👤 ❫
+❪ CHOOSE REPORT COUNT 🚀 ❫
 
-**Send Number of reports which you want to report to this @{}**
+📌 Enter the number of reports you want to send to @{}
 
-The bot will keep reporting to target channel or group until it's reach the number of report. 🎯
+🔹 The bot will relentlessly strike the target channel/group until it reaches your set report count. 🎯🔥
 """
 
     START_MSG = """
-Hɪ {},
+💥 X-Strike Bot — The ultimate destruction tool.
 
-Tʜɪs Bᴏᴛ ɪs ғᴏʀ ᴛᴏ ʀᴇᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ ᴏʀ ɢʀᴏᴜᴘ ɪɴ ᴍᴀss ʟᴇᴠᴇʟ ᴛʜʀᴏᴜɢʜ ᴛᴇʟᴇɢʀᴀᴍ ᴀᴄᴄᴏᴜɴᴛ sᴇssɪᴏɴ sᴛʀɪɴɢ ᴡʜɪᴄʜ ʏᴏᴜ ᴄᴀɴ ɢᴇɴᴇʀᴀᴛᴇ ʙʏ @
-
-Tʜɪs ʙᴏᴛ ɪs sᴏʟᴇʟʏ ᴄʀᴇᴀᴛᴇ ᴏʀ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ :- @aboutitachii
+🔥 Destroy IDs, Groups & Channels 🔥
+👑 Admin: @FR_KAIRV
+⚙️ Developed by: @aboutitachii
+⭐ Feedback: [Soon]
+🚀 How It Works: [Soon]
 """
 
     HELP_MSG = """
-🔆 HELP
+🔆 HELP MENU
 
-📚 Available commands:
-⏣ /start - check I'm alive 
-⏣ /make_config - To Make Config 
-⏣ /del_config - Delete the Config
-⏣ /target - To see the target channel
-⏣ /see_accounts - See all the accounts you added
-⏣ /add_account - Add new accounts
-⏣ /report - Report the target
-⏣ /restart - Restart the bot
+📌 Available Commands:
 
-💢 Features:
-► Report a single channel or group with multiple Id's
-► Type of report option available
-► Facilitie to change the Target Channel or Group
-► Facilitie to add the multiples accounts after once you make config
-► All the accounts you added will automatically joined the target channel or group
-► No need to enter phone number, password or otp just send session string and that's it
-► Check the server status and resources
+⏣ /start — Check if I'm alive ✅
+⏣ /make_config — Create a new config ⚙️
+⏣ /del_config — Delete existing config ❌
+⏣ /target — View the current target 🎯
+⏣ /see_accounts — List added accounts 👥
+⏣ /add_account — Add new accounts ➕
+⏣ /report — Strike the target 🚀
+⏣ /restart — Reboot the bot 🔄
+
+⚡ Use the commands wisely!
+
+
+💢 Features
+
+► Mass Report: Strike a single channel/group with multiple IDs
+► Custom Reports: Choose the type of report for every strike
+► Target Flexibility: Easily change the target channel or group
+► Multiple Accounts: Add as many accounts as you need after configuring
+► Automatic Joining: All added accounts join the target automatically
+► Easy Setup: No need for phone number, password, or OTP—just send the session string
+► Server Monitoring: Track server status and resource usage in real-time
+
+⚡ Unleash the power!
 """
 
     ABOUT_MSG = """
