@@ -11,7 +11,7 @@ async def handle_start(bot:Client, message:Message):
 
     Btn = [
         [InlineKeyboardButton(text='˹ ʜєʟᴘ ˼', callback_data='help'), InlineKeyboardButton(text='˹ ʙσᴛ sᴛᴧᴛυs ˼', callback_data='server')],
-        [InlineKeyboardButton(text='˹ υᴘᴅᴧᴛє ˼', url='https://t.me/Grandxmasti'), InlineKeyboardButton(text='˹ ʙσᴛ ɪηғσ ˼', callback_data='about')],
+        [InlineKeyboardButton(text='˹ υᴘᴅᴧᴛє ˼', url='https://t.me/+-P8KJFTJYcIyZTcx'), InlineKeyboardButton(text='˹ ʙσᴛ ɪηғσ ˼', callback_data='about')],
         [InlineKeyboardButton(text='˹ σᴡηєꝛ ˼', url='https://t.me/aboutitachii')]
         ]
 
