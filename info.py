@@ -2,8 +2,16 @@ import os
 import time
 
 class Config(object):
-    # Pyrogram Client
-    API_ID    = int(os.environ.get("API_ID", "24509589"))  # ⚠️ Required
+    # Debugging environment variables
+    print(f"API_ID from environment: {os.environ.get('API_ID')}")
+    
+    try:
+        # Pyrogram Client
+        API_ID = int(os.environ.get("API_ID", "24509589"))  # ⚠️ Required
+    except ValueError as e:
+        print(f"Error converting API_ID to int: {e}")
+        API_ID = None  # या कोई default value दे सकते हो, अगर चाहो तो
+
     API_HASH  = os.environ.get("API_HASH", "717cf21d94c4934bcbe1eaa1ad86ae75") # ⚠️ Required
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7846108167:AAHtYQ_g_RPUvb7sAK9RM-QpmdhSuNVjUPY") # ⚠️ Required
     
@@ -11,6 +19,7 @@ class Config(object):
     BOT_START_TIME = time.time()
     OWNER    = int(os.environ.get("OWNER", "7447837284"))  # ⚠️ Required
     SUDO = list(map(int, os.environ.get("SUDO", "7229395433").split()))  # ⚠️ Required
+    
     # Web Response Config
     WEBHOOK = bool(os.environ.get("WEBHOOK", True))
     PORT = int(os.environ.get("PORT", "8080"))
