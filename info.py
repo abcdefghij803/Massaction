@@ -3,30 +3,39 @@ import time
 
 class Config(object):
     # Pyrogram Client
-    try:
-        API_ID = int(os.environ.get("API_ID", "24509589"))  # ⚠️ Required
-    except ValueError:
-        raise ValueError("Invalid API_ID: It must be an integer.")
+    API_ID = os.environ.get("API_ID")
+    if not API_ID or not API_ID.isdigit():
+        raise ValueError(f"Invalid API_ID: {API_ID}. It must be a numeric integer.")
+    API_ID = int(API_ID)
 
-    API_HASH = os.environ.get("API_HASH", "717cf21d94c4934bcbe1eaa1ad86ae75")  # ⚠️ Required
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7846108167:AAHtYQ_g_RPUvb7sAK9RM-QpmdhSuNVjUPY")  # ⚠️ Required
-    
+    API_HASH = os.environ.get("API_HASH")
+    if not API_HASH:
+        raise ValueError("API_HASH is missing. Please set it in environment variables.")
+
+    BOT_TOKEN = os.environ.get("BOT_TOKEN")
+    if not BOT_TOKEN:
+        raise ValueError("BOT_TOKEN is missing. Please set it in environment variables.")
+
     # Other Configs
     BOT_START_TIME = time.time()
 
-    try:
-        OWNER = int(os.environ.get("OWNER", "7447837284"))  # ⚠️ Required
-    except ValueError:
-        raise ValueError("Invalid OWNER: It must be an integer.")
+    OWNER = os.environ.get("OWNER")
+    if not OWNER or not OWNER.isdigit():
+        raise ValueError(f"Invalid OWNER: {OWNER}. It must be a numeric integer.")
+    OWNER = int(OWNER)
 
+    SUDO = os.environ.get("SUDO", "")
     try:
-        SUDO = list(map(int, os.environ.get("SUDO", "7229395433").split()))  # ⚠️ Required
+        SUDO = list(map(int, SUDO.split())) if SUDO else []
     except ValueError:
-        raise ValueError("Invalid SUDO: All SUDO values must be integers.")
+        raise ValueError(f"Invalid SUDO list: {SUDO}. All SUDO values must be integers.")
 
     # Web Response Config
-    WEBHOOK = bool(os.environ.get("WEBHOOK", True))
-    PORT = int(os.environ.get("PORT", "8080"))
+    WEBHOOK = os.environ.get("WEBHOOK", "True").lower() in ("true", "1", "yes")
+    PORT = os.environ.get("PORT", "8080")
+    if not PORT.isdigit():
+        raise ValueError(f"Invalid PORT: {PORT}. It must be a numeric integer.")
+    PORT = int(PORT)
 
 class Txt(object):
 
