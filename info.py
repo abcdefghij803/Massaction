@@ -6,14 +6,6 @@ class Config(object):
     API_ID = int(os.environ.get("API_ID", "16838432"))  # ⚠️ Required
     API_HASH = os.environ.get("API_HASH", "866e06e7d4a7ab8bd1eb0f770242b878")  # ⚠️ Required
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7707056569:AAHPI-Tw4N7EqGHkq1hTsIdWV1P8QObvHDM")  # ⚠️ Required
-    
-    # Session Strings for Multiple Accounts
-    ACCOUNTS = [
-        {
-            "Session_String": os.environ.get("SESSION_STRING_1", "BQGFKr4AeHj0vwPLL_A3dQgLm-O0Jtja-010d9DCfGdO8qxnCho9uB-euxYqKTM00aIiDxc3p-Al_J2Aw2ORsz6AxUeOguHtWEV4Quu0JCj_vfojADFT7RtG6tfz6zAmj0gRLwzXIgqh0RGO_tZb6fEczuQpClFGKTW2M5ACgcoiYAdsd4SR6X0zGroz2-rk2uILW40jZ22-Kn6mqGQMdwxhCIrhPJAiO0b09ImauCVOWd1eqUWrcM-ys1yob5FiscJXX7RjWgdvzRbCVmMbS_j8hz6jvazoUd5QbkA1FA-KEC4SAF_TZnSUMlEnhK1nJjK1i89HHxZAEupcKRVYGE6aGRl3EwAAAAHD41iOAA),
-            "OwnerName": os.environ.get("OWNER_NAME_1", "Account 1")
-        }
-    ]
 
     # Other Configs
     BOT_START_TIME = time.time()
